@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'msgfilho';
+export class HomeComponent implements OnInit {
+
   textorecebido: string = `Ainda nao recebido`
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     window.addEventListener('message', this.onMessageReceived.bind(this));
@@ -19,5 +22,9 @@ export class AppComponent implements OnInit {
     // }
 
     this.textorecebido = event.data;
+  }
+
+  navegar() {
+    this.router.navigate(['/rota2'])
   }
 }
